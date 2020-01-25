@@ -74,10 +74,10 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
-# user_input = input('Please enter a latitude and longitude separated by a space (ie. 12 100): ')
-
-# list_input = sorted(user_input.split(' ')
-# print(list_input)
+lat1_input = input('Please enter a latitude for point 1: ')
+lon1_input = input('Please enter a longitude for point 1: ')
+lat2_input = input('Please enter a latitude for point 2: ')
+lon2_input = input('Please enter a longitude for point 2: ')
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
@@ -86,5 +86,34 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # TODO Ensure that the lat and lon valuse are all floats
   # Go through each city and check to see if it falls within 
   # the specified coordinates.
+  lat1 = float(lat1)
+  lon1 = float(lon1)
+  lat2 = float(lat2)
+  lon2 = float(lon2)
+  print(type(lat1), type(lat2), type(lon1), type(lon2))
+
+  # check if area format is sent correctly
+  if lat2 < lat1:
+    # switch longitudes
+    lon_holder = lon2
+    lon2 = lon1
+    lon1 = lon_holder
+  elif lon2 > lon1: 
+    # switch latitudes
+    lat_holder = lat2
+    lat2 = lat1
+    lat1 = lat_holder
+ 
+  print(f'lat1 {lat1}, lon2 {lon1}, lat2 {lat2}, lon2 {lon2}')
+
+  for city in cities:
+    if lat1 < city.lat and city.lat < lat2:
+      print('passes lat check')
+      if city.lon < lon1 and lon2 < city.lon:
+        within.append(city)
+    else:
+      print('city does not fit in this area')
 
   return within
+
+cityreader_stretch(lat1_input, lon1_input, lat2_input, lon2_input, cities)
