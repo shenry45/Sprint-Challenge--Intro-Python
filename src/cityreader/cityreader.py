@@ -31,7 +31,10 @@ def cityreader(cities=[]):
     citiesFromCSV = csv.reader(csvfile)
 
     for place in citiesFromCSV:
-      cities.append( City(place[0], place[3], place[4]) )
+      if place[0] == "city" or place[1] is None:
+        pass
+      else:
+        cities.append( City( place[0], float(place[3]), float(place[4]) ) )
     
   return cities
 
@@ -39,7 +42,7 @@ cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(c)
+    print(c.name, c.lat, c.lon)
 
 # STRETCH GOAL!
 #
@@ -71,6 +74,10 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
+# user_input = input('Please enter a latitude and longitude separated by a space (ie. 12 100): ')
+
+# list_input = sorted(user_input.split(' ')
+# print(list_input)
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
