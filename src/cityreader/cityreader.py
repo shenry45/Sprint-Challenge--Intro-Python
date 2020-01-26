@@ -93,27 +93,27 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   print(type(lat1), type(lat2), type(lon1), type(lon2))
 
   # check if area format is sent correctly
-  if lat2 < lat1:
-    # switch longitudes
-    lon_holder = lon2
-    lon2 = lon1
-    lon1 = lon_holder
-  elif lon2 > lon1: 
-    # switch latitudes
-    lat_holder = lat2
-    lat2 = lat1
-    lat1 = lat_holder
+  # if lat2 < lat1:
+  #   # switch longitudes
+  #   lon_holder = lon2
+  #   lon2 = lon1
+  #   lon1 = lon_holder
+  # elif lon2 > lon1: 
+  #   # switch latitudes
+  #   lat_holder = lat2
+  #   lat2 = lat1
+  #   lat1 = lat_holder
  
-  print(f'lat1 {lat1}, lon2 {lon1}, lat2 {lat2}, lon2 {lon2}')
+  # print(f'lat1 {lat1}, lon2 {lon1}, lat2 {lat2}, lon2 {lon2}')
 
   for city in cities:
     if lat1 < city.lat and city.lat < lat2:
-      print('passes lat check')
       if city.lon < lon1 and lon2 < city.lon:
         within.append(city)
-    else:
-      print('city does not fit in this area')
 
+  for cityPassed in within:
+    print(cityPassed.name)
+  
   return within
 
 cityreader_stretch(lat1_input, lon1_input, lat2_input, lon2_input, cities)
