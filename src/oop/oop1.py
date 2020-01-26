@@ -17,3 +17,27 @@
 #     pass
 #
 # Put a comment noting which class is the base class
+
+# PRIMARY CLASS
+class Vehicle():
+    pass
+
+# 2ND TIER CLASSES
+class GroundVehicle(Vehicle):
+    pass
+
+class FlightVehicle(Vehicle):
+    pass
+
+# 3RD TIER CLASSES
+class Car(GroundVehicle):
+    pass
+
+class Motorcycle(GroundVehicle):
+    pass
+
+class Starship(FlightVehicle):
+    pass
+
+class Airplane(FlightVehicle):
+    pass
